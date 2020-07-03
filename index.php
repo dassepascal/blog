@@ -1,3 +1,5 @@
+<?php require('inc_connexion.php');?> 
+
 <!DOCTYPE html>
 
 <html>
@@ -7,21 +9,28 @@
 <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-    <div class="container">
-    <div class="header">
-    <h1>Mon super blog !</h1>
-    </div>
+
     
-    <a href="#">Retour à la liste des billets</a>
-    <div class="news">
-        <form method="POST" action="commentaires.php">
-            
-                <input type="text" name="titre" id="titre"><br/>
-              
-               <input type="text" name="contenu" id="contenu">
-        </form>  
-    </div>
-    </div>
+    <h1>Mon super blog !</h1>
+   <p>Derniers billets du blog: </p>
+   <?php 
+   // on recupere les 5 derniers billets 
+   //requete
+   $reponse = $bdd->query('SELECT titre,contenu,date_creation FROM billets ORDER BY ID DESC LIMIT 0,5 ');
+   while($donnees = $reponse->fetch()){
+       $titre = $donnees['titre'];
+      
+
+       $contenu = $donnees['contenu'];
+       
+       $date_creation = $donnees['date_creation'];
+       ?>
+       <div class="news" >
+           <h3><?php echo'' . $titre .' le '.$date_creation. '' ?></h3>
+           <p><?php echo '' .$contenu.''?><br />
+           <a href="commentaires.php">Commentaires</a></p>
+       </div>          
+       <?php  } ?>
    
 </body>
 </html>
