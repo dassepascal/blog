@@ -16,8 +16,9 @@
    <?php 
    // on recupere les 5 derniers billets 
    //requete
-   $reponse = $bdd->query('SELECT titre,contenu,date_creation FROM billets ORDER BY ID DESC LIMIT 0,5 ');
+   $reponse = $bdd->query('SELECT id, titre,contenu,date_creation FROM billets ORDER BY ID DESC LIMIT 0,5 ');
    while($donnees = $reponse->fetch()){
+       $id = $donnees['id'];
        $titre = $donnees['titre'];
       
 
@@ -26,9 +27,10 @@
        $date_creation = $donnees['date_creation'];
        ?>
        <div class="news" >
+
            <h3><?php echo'' . $titre .' le '.$date_creation. '' ?></h3>
            <p><?php echo '' .$contenu.''?><br />
-           <a href="commentaires.php">Commentaires</a></p>
+           <a href="commentaires.php?id=<?php echo $id ?>">Commentaires</a></p>
        </div>          
        <?php  } ?>
    
