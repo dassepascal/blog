@@ -1,0 +1,26 @@
+
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,h3{
+    text-align: center;
+}
+h3{
+    background-color: black;
+    color: #fff;
+    font-size: 0.9em;
+    margin-bottom: 0px;
+}
+a{
+    text-decoration: none;
+    color: blue;
+}
+.news{
+    width: 70%;
+    margin: auto;
+}
+.news p {
+    background-color: #cccccc;
+    margin-top: 0px;
+}
